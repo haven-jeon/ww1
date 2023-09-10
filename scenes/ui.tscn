@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmjm7va4lxbkk"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_wyxlj"]
+
+[sub_resource type="Theme" id="Theme_m3lda"]
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_f6x72"]
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_4m4jl"]
+default_font_size = 40
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_wyxlj")
+
+[node name="score" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_bottom = 97.0
+grow_horizontal = 0
+theme = SubResource("Theme_m3lda")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="startbtn" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -45.0
+offset_right = 72.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_f6x72")
+text = "Start"
+
+[node name="counter" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_right = 104.0
+offset_bottom = 95.0
+grow_horizontal = 2
+theme = SubResource("Theme_4m4jl")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="counter"]
+wait_time = 40.0
+
+[connection signal="pressed" from="startbtn" to="." method="_on_startbtn_pressed"]
+[connection signal="timeout" from="counter/Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterStatus" load_steps=2 format=3 uid="uid://bl6t6i7oaxl3u"]
+
+[ext_resource type="Script" path="res://scripts/character_status.gd" id="1_sklb8"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_sklb8")
+Name = "Enemy_1"
+Class = 1
+Health = 20.0

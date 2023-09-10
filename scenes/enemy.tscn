@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://1w4ue7iy6asu"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ojoq"]
+[ext_resource type="Texture2D" uid="uid://dtlgfkagj4a3j" path="res://assets/soldier-enemy-Sheet.png" id="1_bumv5"]
+[ext_resource type="PackedScene" uid="uid://b8ttt3oau7amr" path="res://scenes/health_component.tscn" id="2_7tlfk"]
+[ext_resource type="Resource" uid="uid://bl6t6i7oaxl3u" path="res://scenes/character_status.tres" id="3_wbtga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nocoo"]
+size = Vector2(7, 6)
+
+[sub_resource type="Animation" id="Animation_qxct1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("soldier:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_allb1"]
+resource_name = "die"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("soldier:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.39, 0.67),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.77),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["die"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rcql7"]
+resource_name = "idle"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("soldier:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.27),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_i3vlp"]
+resource_name = "running"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("soldier:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpjt8"]
+_data = {
+"RESET": SubResource("Animation_qxct1"),
+"die": SubResource("Animation_allb1"),
+"idle": SubResource("Animation_rcql7"),
+"running": SubResource("Animation_i3vlp")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 2
+script = ExtResource("1_4ojoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_nocoo")
+
+[node name="soldier" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_bumv5")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_qpjt8")
+}
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_7tlfk")]
+unique_name_in_owner = true
+STATUS = ExtResource("3_wbtga")

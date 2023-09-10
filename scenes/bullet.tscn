@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://r7p2pd1ygvno"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_xh5cd"]
+[ext_resource type="Texture2D" uid="uid://bolg5gmcib1ny" path="res://assets/bullet.png" id="2_on8gx"]
+[ext_resource type="PackedScene" uid="uid://cdbqu1fspw7p8" path="res://scenes/attack_component.tscn" id="3_gf25p"]
+[ext_resource type="Resource" uid="uid://cgquwhoi63tdh" path="res://scenes/weapon.tres" id="4_k7n2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6tun"]
+size = Vector2(2, 1)
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_xh5cd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_on8gx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_h6tun")
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_gf25p")]
+scale = Vector2(3, 3)
+Weapon = ExtResource("4_k7n2m")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://cgquwhoi63tdh"]
+
+[ext_resource type="Script" path="res://scripts/Weapon.gd" id="1_shxid"]
+
+[resource]
+script = ExtResource("1_shxid")
+Name = "Gun Bullet"
+Class = 0
+Cooltime = 0.1
+speed = 300.0
+Power = 10.0
