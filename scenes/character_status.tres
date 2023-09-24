@@ -7,4 +7,4 @@ resource_local_to_scene = true
 script = ExtResource("1_sklb8")
 Name = "Enemy_1"
 Class = 1
-Health = 20.0
+Health = 50.0

@@ -1407,7 +1407,6 @@ layer_0/tile_data = PackedInt32Array(524293, 1310720, 14, 589829, 1310720, 15, 6
 position = Vector2(576, 328)
 
 [node name="spawn_timer" type="Timer" parent="."]
-autostart = true
 
 [node name="player" parent="." instance=ExtResource("2_0ocjg")]
 position = Vector2(94, 303)

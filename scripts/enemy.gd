@@ -4,11 +4,13 @@ extends CharacterBody2D
 signal die
 
 @export var speed: float
+@export var knock_speed: float
 
 @onready var anim: AnimationPlayer = %AnimationPlayer
 @onready var health: HealthComponent = %HealthComponent
 
 var target: Vector2 = Vector2.ZERO
+var knockdir: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -22,6 +24,9 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(target) < 10:
 		velocity = Vector2.ZERO
 		anim.play('idle')
+	if knockdir != Vector2.ZERO:
+		velocity = knockdir * knock_speed
+		knockdir = Vector2.ZERO
 	move_and_slide()
 	
 func rush(tgt: Vector2) -> void:
@@ -29,7 +34,8 @@ func rush(tgt: Vector2) -> void:
 	set_physics_process(true)
 	
 
-func damage(attack: Attack) -> void:
+func damage(attack: Attack, bullet_dir: Vector2) -> void:
+	knockdir = global_transform.x.direction_to(bullet_dir)
 	health.damage(attack)
 	
 

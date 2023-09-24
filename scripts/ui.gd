@@ -27,7 +27,7 @@ func time_to_min_sec(time: float) -> String:
 	var mins = int(time) / 60
 	time -= mins * 60
 	var secs = int(time)
-	return "%0*d" % [2, mins] + ":" + "%0*d" % [2, secs]
+	return "%02d" % mins + ":" + "%02d" % secs
 
 
 func _on_startbtn_pressed() -> void:
