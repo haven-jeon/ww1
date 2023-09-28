@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://r7p2pd1ygvno" path="res://scenes/bullet.tscn" id="2_3j1go"]
 [ext_resource type="Texture2D" uid="uid://c0gt7h45cdj4" path="res://assets/basic_gun-Sheet.png" id="2_ehiyo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq54r"]
-size = Vector2(5, 7)
-
 [sub_resource type="Animation" id="Animation_d0a4j"]
 length = 0.001
 tracks/0/type = "value"
@@ -120,14 +117,13 @@ _data = {
 "running": SubResource("Animation_i3vlp")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_iawdn"]
+radius = 11.5109
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_41fju")
 bullet = ExtResource("2_3j1go")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_yq54r")
 
 [node name="soldier" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -157,3 +153,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_qpjt8")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("CircleShape2D_iawdn")

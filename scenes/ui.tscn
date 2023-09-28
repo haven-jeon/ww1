@@ -59,5 +59,42 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="counter"]
 wait_time = 40.0
 
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.213108
+anchor_top = 0.164352
+anchor_right = 0.786892
+anchor_bottom = 0.835648
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.026
+anchor_right = 0.980333
+anchor_bottom = 0.973563
+offset_left = -0.220001
+offset_top = 0.19
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="settingsbtn" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Settings"
+
 [connection signal="pressed" from="startbtn" to="." method="_on_startbtn_pressed"]
 [connection signal="timeout" from="counter/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="settingsbtn" to="." method="_on_settingsbtn_pressed"]

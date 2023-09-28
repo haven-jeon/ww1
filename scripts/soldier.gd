@@ -30,7 +30,8 @@ func shoot() -> void:
 	var b = bullet.instantiate()
 	owner.add_child(b)
 	cooltime = b.cooltime
-	b.global_transform = $soldier/Muzzle.global_transform	
+	b.global_transform = $soldier/Muzzle.global_transform
+	b.rotation += deg_to_rad(randf_range(-5, 5))
 
 
 func move() -> void:
