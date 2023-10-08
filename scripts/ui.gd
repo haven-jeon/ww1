@@ -8,11 +8,14 @@ signal stop_game
 @onready var startbtn: Button = $startbtn
 @onready var counter: Label = $counter
 @onready var timer: Timer = $counter/Timer
+@onready var settings_panel: Panel = $SettingsPanel
 
 func _ready() -> void:
 	score.text = "%d" % 0
 	startbtn.visible = true
 	
+	Settings.ui = self
+	Settings.initSettings()
 
 func update_score(point: int) -> void:
 	score.text = "%d" % point
@@ -40,3 +43,6 @@ func _on_timer_timeout() -> void:
 	emit_signal("stop_game")
 	timer.stop()
 	startbtn.visible = true
+
+func _on_settingsbtn_pressed() -> void:
+	settings_panel.visible = !settings_panel.visible
