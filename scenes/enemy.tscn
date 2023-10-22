@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://1w4ue7iy6asu"]
+[gd_scene load_steps=13 format=3 uid="uid://1w4ue7iy6asu"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_4ojoq"]
 [ext_resource type="Texture2D" uid="uid://dtlgfkagj4a3j" path="res://assets/soldier-enemy-Sheet.png" id="1_bumv5"]
 [ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="3_1u226"]
 [ext_resource type="Script" path="res://scripts/character_status.gd" id="4_1ba1r"]
+[ext_resource type="PackedScene" uid="uid://bylwrb5gro7ae" path="res://assets/terrain_detector.tscn" id="5_4bmud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wotsu"]
 
@@ -144,3 +145,10 @@ libraries = {
 unique_name_in_owner = true
 script = ExtResource("3_1u226")
 STATUS = SubResource("Resource_d7ea1")
+
+[node name="TerrainDetector" parent="." instance=ExtResource("5_4bmud")]
+unique_name_in_owner = true
+
+[connection signal="in_normal" from="TerrainDetector" to="." method="_on_terrain_detector_in_normal"]
+[connection signal="in_swarm" from="TerrainDetector" to="." method="_on_terrain_detector_in_swarm"]
+[connection signal="in_wire" from="TerrainDetector" to="." method="_on_terrain_detector_in_wire"]

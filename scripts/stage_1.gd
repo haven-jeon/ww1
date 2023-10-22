@@ -31,9 +31,6 @@ func _on_die_score() -> void:
 func _on_spawn_timer_timeout() -> void:
 	enemy_start()
 	$spawn_timer.start()
-	
-	
-
 
 func _on_ui_start_game() -> void:
 	player.move()

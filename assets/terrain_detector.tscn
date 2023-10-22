@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bylwrb5gro7ae"]
+
+[ext_resource type="Script" path="res://scripts/TerrainDetector.gd" id="1_7ib03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njg0d"]
+size = Vector2(11.75, 13)
+
+[node name="TerrainDetector" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_7ib03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_njg0d")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

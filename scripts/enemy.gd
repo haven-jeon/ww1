@@ -11,6 +11,7 @@ signal die
 
 var target: Vector2 = Vector2.ZERO
 var knockdir: Vector2 = Vector2.ZERO
+var terrain_speed: float = 1.0
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -18,14 +19,14 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if target != Vector2.ZERO:
-		velocity = global_position.direction_to(target) * speed
+		velocity = global_position.direction_to(target) * speed * terrain_speed
 		look_at(target)
 		anim.play('running')
 	if position.distance_to(target) < 10:
 		velocity = Vector2.ZERO
 		anim.play('idle')
 	if knockdir != Vector2.ZERO:
-		velocity = knockdir * knock_speed
+		velocity = knockdir * knock_speed * terrain_speed
 		knockdir = Vector2.ZERO
 	move_and_slide()
 	
@@ -44,6 +45,15 @@ func _on_health_component_die(isend: bool=false) -> void:
 	if not isend:
 		emit_signal("die")
 	set_physics_process(false)
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.call_deferred("set_disabled", true)
 	anim.play('die')
-	
+
+
+func _on_terrain_detector_in_normal() -> void:
+	terrain_speed = 1.0
+
+func _on_terrain_detector_in_swarm() -> void:
+	terrain_speed = 0.5
+
+func _on_terrain_detector_in_wire() -> void:
+	terrain_speed = 0.1
