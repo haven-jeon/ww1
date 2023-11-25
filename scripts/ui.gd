@@ -23,7 +23,7 @@ func update_score(point: int) -> void:
 func on_game_over() -> void:
 	startbtn.visible = true
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	counter.text = time_to_min_sec(timer.time_left)
 
 func time_to_min_sec(time: float) -> String:
@@ -42,7 +42,8 @@ func _on_startbtn_pressed() -> void:
 func _on_timer_timeout() -> void:
 	emit_signal("stop_game")
 	timer.stop()
-	startbtn.visible = true
+	#startbtn.visible = true
+	Settings.next_level()
 
 func _on_settingsbtn_pressed() -> void:
 	settings_panel.visible = !settings_panel.visible

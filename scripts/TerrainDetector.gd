@@ -43,6 +43,6 @@ func _process_terrain(body_rid: RID, body: TileMap) -> void:
 			var terrain_mask = tile_data.get_custom_data("obstacles")
 			_update_terrain(terrain_mask) 
 
-func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body is TileMap:
 		_process_terrain(body_rid, body)

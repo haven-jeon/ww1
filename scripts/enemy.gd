@@ -17,7 +17,7 @@ func _ready() -> void:
 	set_physics_process(false)
 	health.die.connect(_on_health_component_die)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if target != Vector2.ZERO:
 		velocity = global_position.direction_to(target) * speed * terrain_speed
 		look_at(target)
