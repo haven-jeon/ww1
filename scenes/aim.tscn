@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr3mlwegs5n8v"]
+
+[ext_resource type="Script" path="res://scripts/aim.gd" id="1_b5v42"]
+[ext_resource type="PackedScene" uid="uid://dvioklwu1ge00" path="res://scripts/bomb.tscn" id="2_6xynf"]
+[ext_resource type="Texture2D" uid="uid://ba8rn2y8130hh" path="res://assets/target.png" id="2_xa00i"]
+
+[node name="Aim" type="Node2D"]
+visible = false
+script = ExtResource("1_b5v42")
+bomb = ExtResource("2_6xynf")
+
+[node name="Marker" type="Sprite2D" parent="."]
+texture = ExtResource("2_xa00i")
+
+[node name="Marker2D" type="Marker2D" parent="Marker"]
+
+[node name="AimTimer" type="Timer" parent="."]

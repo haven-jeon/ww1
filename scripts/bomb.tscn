@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvioklwu1ge00"]
+
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_8xcta"]
+[ext_resource type="Script" path="res://scripts/AttackComponent.gd" id="1_gda3v"]
+[ext_resource type="Script" path="res://scripts/Explotion.gd" id="2_ugupe"]
+[ext_resource type="Resource" uid="uid://4j5xl058pguc" path="res://scenes/hand_grenade.tres" id="3_dschw"]
+
+[sub_resource type="Curve" id="Curve_gaakk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.436047, 0.415368), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_rig85"]
+colors = PackedColorArray(0.992157, 0.960784, 0, 1, 1, 0.0117647, 0.00392157, 1)
+
+[sub_resource type="Animation" id="Animation_w60d7"]
+resource_name = "explotion"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwpr7"]
+_data = {
+"explotion": SubResource("Animation_w60d7")
+}
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_8xcta")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Explotion" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.47
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+scale_amount_min = 10.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_gaakk")
+color_ramp = SubResource("Gradient_rig85")
+script = ExtResource("2_ugupe")
+particle_amount = 80
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nwpr7")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 6
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("1_gda3v")
+Weapon = ExtResource("3_dschw")

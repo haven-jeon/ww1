@@ -12,5 +12,5 @@ enum WEAPON_CLASS {
 @export var Cooltime: float
 @export var speed: float
 @export var Power: float
-
+@export var Img: Texture2D
 

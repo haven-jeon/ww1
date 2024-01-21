@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://57uky8rqocan"]
+[gd_scene load_steps=15 format=3 uid="uid://57uky8rqocan"]
 
 [ext_resource type="Script" path="res://scripts/soldier.gd" id="1_41fju"]
 [ext_resource type="Texture2D" uid="uid://da1xl3wyl3v5t" path="res://assets/soldier-Sheet.png" id="1_rer0x"]
 [ext_resource type="PackedScene" uid="uid://r7p2pd1ygvno" path="res://scenes/bullet.tscn" id="2_3j1go"]
 [ext_resource type="Texture2D" uid="uid://c0gt7h45cdj4" path="res://assets/basic_gun-Sheet.png" id="2_ehiyo"]
+[ext_resource type="PackedScene" uid="uid://dr3mlwegs5n8v" path="res://scenes/aim.tscn" id="5_0hjjl"]
 
 [sub_resource type="Animation" id="Animation_d0a4j"]
 length = 0.001
@@ -157,3 +158,5 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("CircleShape2D_iawdn")
+
+[node name="Aim" parent="." instance=ExtResource("5_0hjjl")]
