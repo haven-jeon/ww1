@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://57uky8rqocan"]
+[gd_scene load_steps=16 format=3 uid="uid://57uky8rqocan"]
 
 [ext_resource type="Script" path="res://scripts/soldier.gd" id="1_41fju"]
 [ext_resource type="Texture2D" uid="uid://da1xl3wyl3v5t" path="res://assets/soldier-Sheet.png" id="1_rer0x"]
 [ext_resource type="PackedScene" uid="uid://r7p2pd1ygvno" path="res://scenes/bullet.tscn" id="2_3j1go"]
-[ext_resource type="Texture2D" uid="uid://c0gt7h45cdj4" path="res://assets/basic_gun-Sheet.png" id="2_ehiyo"]
+[ext_resource type="Texture2D" uid="uid://c0gt7h45cdj4" path="res://assets/basic_gun.png" id="4_hej2t"]
 [ext_resource type="PackedScene" uid="uid://dr3mlwegs5n8v" path="res://scenes/aim.tscn" id="5_0hjjl"]
+[ext_resource type="PackedScene" uid="uid://qigw5toqjjwe" path="res://scenes/inventory_ui.tscn" id="6_ufilc"]
 
 [sub_resource type="Animation" id="Animation_d0a4j"]
 length = 0.001
@@ -121,7 +122,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_iawdn"]
 radius = 11.5109
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_41fju")
 bullet = ExtResource("2_3j1go")
@@ -135,7 +136,7 @@ vframes = 4
 [node name="gun" type="Sprite2D" parent="soldier"]
 show_behind_parent = true
 position = Vector2(7, 3)
-texture = ExtResource("2_ehiyo")
+texture = ExtResource("4_hej2t")
 hframes = 3
 
 [node name="Muzzle" type="Marker2D" parent="soldier"]
@@ -160,3 +161,12 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("CircleShape2D_iawdn")
 
 [node name="Aim" parent="." instance=ExtResource("5_0hjjl")]
+
+[node name="PlayerStatus" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="PlayerStatus" instance=ExtResource("6_ufilc")]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+
+[connection signal="use_ammo" from="Aim" to="PlayerStatus/InventoryUI" method="_on_aim_use_ammo"]
+[connection signal="select_weapon" from="PlayerStatus/InventoryUI" to="Aim" method="_on_inventory_ui_select_weapon"]

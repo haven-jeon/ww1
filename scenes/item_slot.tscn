@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://db700ftg41af2"]
+
+[ext_resource type="Texture2D" uid="uid://bq5q02hqtyrne" path="res://scripts/inventory_item.png" id="1_6vfbp"]
+[ext_resource type="Script" path="res://scripts/item_slot.gd" id="1_yqsk8"]
+[ext_resource type="PackedScene" uid="uid://cisbtpjctt6c6" path="res://scenes/ground_item.tscn" id="2_yiv27"]
+
+[node name="ItemSlot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_yqsk8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6vfbp")
+centered = false
+
+[node name="Selected" type="ReferenceRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_right = 16.0
+offset_bottom = 15.0
+editor_only = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="GroundItem" parent="CenterContainer/Control" instance=ExtResource("2_yiv27")]
+unique_name_in_owner = true

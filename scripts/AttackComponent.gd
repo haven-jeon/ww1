@@ -9,8 +9,8 @@ var speed: float
 var img: Texture2D
 
 func _ready() -> void:
-	attack_damage = Weapon.Power
-	cooltime = Weapon.Cooltime
-	speed = Weapon.speed
-	img = Weapon.Img
+    attack_damage = Weapon.Power
+    cooltime = Weapon.Cooltime
+    speed = Weapon.speed
+    img = Weapon.Img
 

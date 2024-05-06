@@ -2,9 +2,9 @@ class_name CharacterStatus
 extends Resource
 
 enum CHARACTER_CLASS {
-	PLAYER,
-	ENEMY,
-	NPC
+    PLAYER,
+    ENEMY,
+    NPC
 }
 
 @export var Name: String

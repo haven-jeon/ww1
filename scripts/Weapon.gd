@@ -3,8 +3,9 @@ extends Resource
 
 
 enum WEAPON_CLASS {
-	HAND_GUN,
-	RIPLE
+    HAND_GUN,
+    RIPLE,
+    GRENADA
 }
 
 @export var Name: String
@@ -13,4 +14,6 @@ enum WEAPON_CLASS {
 @export var speed: float
 @export var Power: float
 @export var Img: Texture2D
-
+@export var CurrentAmmo: int
+@export var MaxAmmo: int
+@export var Consume: int = 1

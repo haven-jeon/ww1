@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bugnopf6jxd1h"]
+[gd_scene load_steps=14 format=3 uid="uid://bugnopf6jxd1h"]
 
 [ext_resource type="Script" path="res://scripts/stage_1.gd" id="1_furny"]
 [ext_resource type="Texture2D" uid="uid://ch5qlwka6l4ou" path="res://assets/TilesetFloor.png" id="1_xduxq"]
@@ -7,6 +7,9 @@
 [ext_resource type="Resource" uid="uid://b53p6ltskr05i" path="res://scenes/game_status.tres" id="3_7vfy4"]
 [ext_resource type="Texture2D" uid="uid://duh5can5u74w8" path="res://assets/wire.png" id="5_5wxig"]
 [ext_resource type="PackedScene" uid="uid://dmjm7va4lxbkk" path="res://scenes/ui.tscn" id="6_6vdh8"]
+[ext_resource type="PackedScene" uid="uid://cisbtpjctt6c6" path="res://scenes/ground_item.tscn" id="8_63k11"]
+[ext_resource type="Resource" uid="uid://4j5xl058pguc" path="res://scenes/hand_grenade.tres" id="9_ewomn"]
+[ext_resource type="Resource" uid="uid://ctinyux1idi5t" path="res://scenes/basic_gun.tres" id="10_gwp2u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yu83m"]
 texture = ExtResource("1_xduxq")
@@ -1482,6 +1485,21 @@ position = Vector2(94, 303)
 scale = Vector2(2, 2)
 
 [node name="ui" parent="." instance=ExtResource("6_6vdh8")]
+
+[node name="GroundItem2" parent="." instance=ExtResource("8_63k11")]
+position = Vector2(81, 547)
+scale = Vector2(3, 3)
+init_item = ExtResource("9_ewomn")
+
+[node name="GroundItem" parent="." instance=ExtResource("8_63k11")]
+position = Vector2(90, 478)
+scale = Vector2(3, 3)
+init_item = ExtResource("9_ewomn")
+
+[node name="GroundItem3" parent="." instance=ExtResource("8_63k11")]
+position = Vector2(97, 393)
+scale = Vector2(3, 3)
+init_item = ExtResource("10_gwp2u")
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="start_game" from="ui" to="." method="_on_ui_start_game"]

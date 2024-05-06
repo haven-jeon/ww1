@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://ctinyux1idi5t"]
+
+[ext_resource type="Texture2D" uid="uid://e3iul07dbe78" path="res://basic_gun.png" id="1_0knm7"]
+[ext_resource type="Script" path="res://scripts/Weapon.gd" id="1_7kode"]
+
+[resource]
+script = ExtResource("1_7kode")
+Name = "basic_gun"
+Class = 1
+Cooltime = 1.0
+speed = 0.0
+Power = 0.0
+Img = ExtResource("1_0knm7")
+CurrentAmmo = 20
+MaxAmmo = 100
+Consume = 1

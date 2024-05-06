@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://qigw5toqjjwe"]
+
+[ext_resource type="Texture2D" uid="uid://bcrs0wmwytewv" path="res://scripts/inventory.png" id="1_cx8hs"]
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_libjd"]
+[ext_resource type="PackedScene" uid="uid://db700ftg41af2" path="res://scenes/item_slot.tscn" id="2_kee00"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 70.0
+script = ExtResource("1_libjd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 70.0
+texture = ExtResource("1_cx8hs")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 69.0
+grow_horizontal = 2
+columns = 4
+
+[node name="ItemSlot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
+
+[node name="ItemSlot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_kee00")]
+layout_mode = 2
