@@ -6,9 +6,9 @@ extends CPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    lifetime = time
-    amount = particle_amount
-    one_shot = true
+	lifetime = time
+	amount = particle_amount
+	one_shot = true
 
 func play() -> void:
-    set_emitting(true)
+	set_emitting(true)
